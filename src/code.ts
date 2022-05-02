@@ -59,3 +59,24 @@ import { fromEvent } from 'rxjs';
 const observable3 = new Observable((observer: any) => {
     observer.next("hello");
 }).pipe(map(data => data.toString().toUpperCase())).subscribe(data => console.log(data));
+
+
+import { Observable, Subject } from 'rxjs';
+
+const subject = new Subject<number>();
+
+//Cold observables
+const observable1 = new Observable((observer) => {
+  observer.next(Math.random()); //lazy will only emit when subscribed
+});
+
+const observable2 = new Observable((observer) => {
+  observer.next(Math.random()); //lazy will only emit when subscribed
+});
+observable1.subscribe((data) => console.log(data));
+observable2.subscribe((data) => console.log(data));
+
+//Hot observables
+subject.subscribe((data) => console.log('Subscriber A', data));
+subject.subscribe((data) => console.log('Subscriber B', data));
+subject.next(Math.random());
