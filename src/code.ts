@@ -63,6 +63,8 @@ const observable3 = new Observable((observer: any) => {
 
 import { Observable, Subject } from 'rxjs';
 
+import { Observable, Subject } from 'rxjs';
+
 const subject = new Subject<number>();
 
 //Cold observables
@@ -79,4 +81,5 @@ observable2.subscribe((data) => console.log(data));
 //Hot observables
 subject.subscribe((data) => console.log('Subscriber A', data));
 subject.subscribe((data) => console.log('Subscriber B', data));
+subject.next(Math.random());
 subject.next(Math.random());
