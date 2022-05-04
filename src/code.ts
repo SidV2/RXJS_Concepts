@@ -93,3 +93,26 @@ let a = {
 }
 let adress = {...a.address, city: 'London'};
 let modifiedState = {...a, name: 'Sid1', address: adress};
+
+
+//Alternative way
+let a = {
+    name: 'Sid',
+    address: {
+        city: 'Windsor',
+        town: {
+            name: 'Josephine'
+        }
+    }
+}
+const b = {
+    ...a,
+    address: {
+        ...a.address,
+        city: 'London',
+        town: {
+            ...a.town,
+            name: 'Josephine1'
+        }
+    }
+}
